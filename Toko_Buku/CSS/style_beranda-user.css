@@ -1,0 +1,868 @@
+/* ===== VARIABLES & RESET ===== */
+:root {
+    --primary: #3498db;
+    --primary-dark: #2980b9;
+    --secondary: #2c3e50;
+    --accent: #e74c3c;
+    --accent-hover: #c0392b;
+    --light: #f8f9fa;
+    --dark: #343a40;
+    --gray: #6c757d;
+    --light-gray: #e9ecef;
+    --border-radius: 8px;
+    --box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    --box-shadow-hover: 0 6px 20px rgba(0, 0, 0, 0.12);
+    --transition: all 0.3s ease;
+    --visi-color: #1e3a5f;
+    --misi-color: #87ceeb;
+    --bestseller-badge: #ff6b35;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: var(--dark);
+    background-color: #f5f7fa;
+    overflow-x: hidden;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+ul {
+    list-style: none;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* ===== BANNER SLIDER ===== */
+.banner-container {
+    position: relative;
+    width: 100%;
+    height: 500px;
+    overflow: hidden;
+    border-bottom: 5px solid var(--primary);
+}
+
+.banner-slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.banner-slide.active {
+    opacity: 1;
+}
+
+.banner-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.banner-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to right, rgba(44, 62, 80, 0.7), rgba(52, 152, 219, 0.5));
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 0 5%;
+    color: white;
+}
+
+.banner-title {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+    max-width: 600px;
+}
+
+.banner-subtitle {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    max-width: 500px;
+}
+
+.banner-btn {
+    background-color: var(--accent);
+    color: white;
+    padding: 0.8rem 1.5rem;
+    border-radius: 30px;
+    font-weight: 600;
+    transition: var(--transition);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.banner-btn:hover {
+    background-color: var(--accent-hover);
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* TOMBOL NAVIGASI BANNER */
+.banner-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    border: none;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: var(--transition);
+    z-index: 10;
+    font-size: 1.2rem;
+}
+
+.banner-nav:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+.banner-nav.prev {
+    left: 20px;
+}
+
+.banner-nav.next {
+    right: 20px;
+}
+
+.banner-dots {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px;
+}
+
+.banner-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.5);
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.banner-dot.active {
+    background-color: white;
+    transform: scale(1.2);
+}
+
+/* ===== KATEGORI SECTION ===== */
+.categories-section {
+    padding: 4rem 0;
+    background: white;
+}
+
+.section-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+}
+
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--light-gray);
+}
+
+.section-title {
+    font-size: 1.8rem;
+    color: var(--secondary);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.section-link {
+    color: var(--primary);
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    transition: var(--transition);
+}
+
+.section-link:hover {
+    color: var(--primary-dark);
+    gap: 0.5rem;
+}
+
+.categories-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 1.5rem;
+}
+
+.category-card {
+    background: white;
+    border-radius: var(--border-radius);
+    padding: 2rem 1rem;
+    text-align: center;
+    box-shadow: var(--box-shadow);
+    transition: var(--transition);
+    cursor: pointer;
+}
+
+.category-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--box-shadow-hover);
+}
+
+.category-icon {
+    font-size: 2.5rem;
+    color: var(--primary);
+    margin-bottom: 1rem;
+}
+
+.category-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--secondary);
+}
+
+/* ===== BUKU BESTSELLER SECTION ===== */
+.bestseller-section {
+    padding: 4rem 0;
+    background: var(--light);
+}
+
+.books-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 1.5rem;
+}
+
+.book-card {
+    background: white;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    box-shadow: var(--box-shadow);
+    transition: var(--transition);
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    position: relative;
+}
+
+.book-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--box-shadow-hover);
+}
+
+.bestseller-badge {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: linear-gradient(135deg, var(--bestseller-badge) 0%, #ff8c42 100%);
+    color: white;
+    padding: 0.3rem 0.6rem;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: bold;
+    z-index: 2;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Untuk badge peringkat 1 */
+.book-card:nth-child(1) .bestseller-badge {
+    background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+    color: #000;
+}
+
+/* Untuk badge peringkat 2 */
+.book-card:nth-child(2) .bestseller-badge {
+    background: linear-gradient(135deg, #C0C0C0 0%, #A0A0A0 100%);
+}
+
+/* Untuk badge peringkat 3 */
+.book-card:nth-child(3) .bestseller-badge {
+    background: linear-gradient(135deg, #CD7F32 0%, #8B4513 100%);
+}
+
+/* Untuk badge peringkat 4 & 5 - menggunakan warna yang sama dengan bestseller biasa */
+.book-card:nth-child(4) .bestseller-badge,
+.book-card:nth-child(5) .bestseller-badge {
+    background: linear-gradient(135deg, var(--bestseller-badge) 0%, #ff8c42 100%);
+}
+
+.book-image {
+    height: 200px;
+    overflow: hidden;
+    position: relative;
+    background: #f8f9fa;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+}
+
+.book-image img {
+    width: auto;
+    height: 100%;
+    max-height: 180px;
+    object-fit: contain;
+    transition: transform 0.5s;
+}
+
+.book-card:hover .book-image img {
+    transform: scale(1.05);
+}
+
+.book-info {
+    padding: 1.2rem;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    border-top: 1px solid var(--light-gray);
+}
+
+.book-author {
+    color: var(--gray);
+    font-size: 0.85rem;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    line-height: 1.3;
+}
+
+.book-title {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--secondary);
+    margin-bottom: 0.6rem;
+    line-height: 1.3;
+    display: -webkit-box;
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    height: 2.6rem;
+}
+
+.book-category {
+    display: inline-block;
+    background: var(--light-gray);
+    color: var(--gray);
+    padding: 0.25rem 0.6rem;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    margin-bottom: 0.8rem;
+    align-self: flex-start;
+}
+
+.book-price-section {
+    margin-top: auto;
+    padding-top: 0.8rem;
+    border-top: 1px solid var(--light-gray);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.book-price {
+    font-weight: bold;
+    color: var(--accent);
+    font-size: 1.1rem;
+}
+
+.book-sales {
+    font-size: 0.8rem;
+    color: var(--gray);
+    background: var(--light-gray);
+    padding: 0.2rem 0.5rem;
+    border-radius: 10px;
+}
+
+/* ===== PROMO SECTION ===== */
+.promo-section {
+    padding: 4rem 0;
+    background: linear-gradient(135deg, var(--secondary) 0%, var(--primary) 100%);
+    color: white;
+    text-align: center;
+}
+
+.promo-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+}
+
+.promo-title {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.promo-subtitle {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    opacity: 0.9;
+}
+
+.promo-btn {
+    background: var(--accent);
+    color: white;
+    border: none;
+    padding: 0.8rem 2rem;
+    border-radius: 30px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.promo-btn:hover {
+    background: var(--accent-hover);
+    transform: translateY(-3px);
+}
+
+/* ===== TENTANG KAMI SECTION ===== */
+.about-section {
+    padding: 4rem 0;
+    background: var(--light);
+}
+
+.about-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+}
+
+.about-text p {
+    margin-bottom: 1.5rem;
+    font-size: 1.1rem;
+    text-align: justify;
+    color: var(--dark);
+    line-height: 1.7;
+}
+
+.about-image {
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    box-shadow: var(--box-shadow);
+}
+
+.about-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* ===== VISI MISI SECTION ===== */
+.visi-misi-section {
+    padding: 4rem 0;
+    background: white;
+}
+
+.visi-misi-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    margin-top: 2rem;
+}
+
+.visi-box,
+.misi-box {
+    background: white;
+    padding: 2.5rem 2rem;
+    border-radius: 12px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+    border-left: 6px solid;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.visi-box {
+    border-left-color: var(--visi-color);
+    background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+}
+
+.misi-box {
+    border-left-color: var(--misi-color);
+    background: linear-gradient(135deg, #ffffff 0%, #f0f8ff 100%);
+}
+
+.visi-box:hover,
+.misi-box:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+}
+
+.visi-misi-title {
+    color: var(--secondary);
+    margin-bottom: 1.5rem;
+    font-size: 1.7rem;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+}
+
+.visi-box .visi-misi-title {
+    color: var(--visi-color);
+}
+
+.misi-box .visi-misi-title {
+    color: var(--misi-color);
+}
+
+.visi-content {
+    font-size: 1.15rem;
+    font-style: italic;
+    color: var(--visi-color);
+    line-height: 1.7;
+    font-weight: 500;
+}
+
+.misi-list {
+    list-style-type: none;
+}
+
+.misi-list li {
+    margin-bottom: 1.2rem;
+    padding-left: 2.2rem;
+    position: relative;
+    line-height: 1.6;
+    color: var(--dark);
+    font-size: 1.05rem;
+}
+
+.misi-list li:before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: var(--misi-color);
+    font-weight: bold;
+    font-size: 1.3rem;
+    width: 28px;
+    height: 28px;
+    background: rgba(135, 206, 235, 0.1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* ===== BLOG SECTION ===== */
+.blog-section {
+    padding: 4rem 0;
+    background: white;
+}
+
+.blog-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.blog-card {
+    background: white;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    box-shadow: var(--box-shadow);
+    transition: var(--transition);
+}
+
+.blog-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--box-shadow-hover);
+}
+
+.blog-image {
+    height: 200px;
+    overflow: hidden;
+}
+
+.blog-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s;
+}
+
+.blog-card:hover .blog-image img {
+    transform: scale(1.05);
+}
+
+.blog-content {
+    padding: 1.5rem;
+}
+
+.blog-title {
+    font-size: 1.2rem;
+    margin-bottom: 0.8rem;
+    color: var(--secondary);
+    line-height: 1.4;
+}
+
+.blog-excerpt {
+    color: var(--gray);
+    margin-bottom: 1.2rem;
+    line-height: 1.5;
+}
+
+.blog-link {
+    color: var(--primary);
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    transition: var(--transition);
+}
+
+.blog-link:hover {
+    color: var(--primary-dark);
+    gap: 0.5rem;
+}
+
+/* ===== FEATURED SECTION ===== */
+.featured-section {
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    padding: 3rem 0;
+    margin: 3rem 0;
+    border-radius: var(--border-radius);
+}
+
+.featured-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+}
+
+.featured-card {
+    background: white;
+    border-radius: var(--border-radius);
+    padding: 1.5rem;
+    text-align: center;
+    box-shadow: var(--box-shadow);
+    transition: var(--transition);
+}
+
+.featured-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--box-shadow-hover);
+}
+
+.featured-icon {
+    font-size: 2.5rem;
+    color: var(--primary);
+    margin-bottom: 1rem;
+}
+
+.featured-title {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+    color: var(--secondary);
+}
+
+.featured-desc {
+    color: var(--gray);
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+
+/* ===== RESPONSIVE DESIGN ===== */
+@media (max-width: 1200px) {
+    .categories-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    .books-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+@media (max-width: 992px) {
+    .categories-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1rem;
+    }
+
+    .books-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .about-content {
+        grid-template-columns: 1fr;
+    }
+
+    .visi-misi-container {
+        grid-template-columns: 1fr;
+    }
+
+    .banner-title {
+        font-size: 2.5rem;
+    }
+
+    .banner-subtitle {
+        font-size: 1.1rem;
+    }
+
+    .book-image {
+        height: 180px;
+    }
+
+    .book-image img {
+        max-height: 160px;
+    }
+}
+
+@media (max-width: 768px) {
+    .categories-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .books-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .banner-container {
+        height: 400px;
+    }
+
+    .banner-title {
+        font-size: 2rem;
+    }
+
+    .banner-subtitle {
+        font-size: 1rem;
+    }
+
+    .banner-nav {
+        width: 40px;
+        height: 40px;
+        font-size: 1rem;
+    }
+
+    .banner-nav.prev {
+        left: 10px;
+    }
+
+    .banner-nav.next {
+        right: 10px;
+    }
+
+    .featured-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .book-image {
+        height: 160px;
+    }
+
+    .book-image img {
+        max-height: 140px;
+    }
+
+    .book-info {
+        padding: 1rem;
+    }
+
+    .book-title {
+        font-size: 0.95rem;
+        height: 2.4rem;
+    }
+
+    .book-author {
+        font-size: 0.8rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .categories-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .books-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .banner-container {
+        height: 350px;
+    }
+
+    .banner-title {
+        font-size: 1.8rem;
+    }
+
+    .banner-overlay {
+        padding: 0 1.5rem;
+    }
+
+    .banner-nav {
+        display: none;
+    }
+
+    .featured-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .section-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+
+    .visi-box,
+    .misi-box {
+        padding: 1.5rem 1rem;
+    }
+
+    .visi-misi-title {
+        font-size: 1.4rem;
+    }
+
+    .book-image {
+        height: 200px;
+    }
+
+    .book-image img {
+        max-height: 180px;
+    }
+}
+
+@media (max-width: 480px) {
+    .books-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .categories-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}

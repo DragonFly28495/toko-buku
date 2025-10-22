@@ -1,0 +1,183 @@
+        /* ===== TABLE STYLES ===== */
+        .table-controls {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .search-form {
+            display: flex;
+            gap: 0.5rem;
+            align-items: center;
+        }
+
+        .search-form input {
+            padding: 0.75rem;
+            border: 2px solid #eaeaea;
+            border-radius: 6px;
+            min-width: 250px;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+        }
+
+        .search-form input:focus {
+            outline: none;
+            border-color: #3498db;
+            box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+        }
+
+        .btn-search {
+            background-color: #27ae60;
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 6px;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .btn-search:hover {
+            background-color: #219a52;
+            transform: translateY(-2px);
+        }
+
+        .btn-reset {
+            background-color: #e74c3c;
+            color: white;
+            padding: 0.75rem 1.5rem;
+            text-decoration: none;
+            border-radius: 6px;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .btn-reset:hover {
+            background-color: #c0392b;
+            transform: translateY(-2px);
+        }
+
+        .table-container {
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            margin-bottom: 1.5rem;
+        }
+
+        .table-wrapper {
+            overflow-x: auto;
+        }
+
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .data-table th {
+            background-color: #2c3e50;
+            color: white;
+            padding: 1rem;
+            text-align: left;
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        .data-table td {
+            padding: 1rem;
+            border-bottom: 1px solid #eaeaea;
+            font-size: 0.95rem;
+        }
+
+        .data-table tr:hover {
+            background-color: #f8f9fa;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .btn-delete {
+            background-color: #e74c3c;
+            color: white;
+            padding: 0.5rem 1rem;
+            text-decoration: none;
+            border-radius: 4px;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.25rem;
+            font-size: 0.85rem;
+            transition: all 0.3s ease;
+        }
+
+        .btn-delete:hover {
+            background-color: #c0392b;
+            transform: translateY(-2px);
+        }
+
+        .no-data {
+            text-align: center;
+            padding: 3rem !important;
+            color: #7f8c8d;
+            font-size: 1.1rem;
+        }
+
+        .no-data i {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        .table-footer {
+            display: flex;
+            justify-content: flex-start;
+        }
+
+        .total-info {
+            background-color: #2c3e50;
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 6px;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 500;
+        }
+
+        /* ===== RESPONSIVE DESIGN ===== */
+        @media (max-width: 768px) {
+            .table-controls {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .search-form {
+                flex-direction: column;
+            }
+
+            .search-form input {
+                min-width: auto;
+                width: 100%;
+            }
+
+            .action-buttons {
+                flex-direction: column;
+            }
+
+            .data-table th,
+            .data-table td {
+                padding: 0.75rem 0.5rem;
+                font-size: 0.85rem;
+            }
+        }

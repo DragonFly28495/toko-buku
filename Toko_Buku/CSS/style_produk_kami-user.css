@@ -1,0 +1,1249 @@
+/* ===== BANNER STYLES ===== */
+.banner-container {
+    position: relative;
+    width: 100%;
+    height: 500px;
+    overflow: hidden;
+    border-bottom: 5px solid var(--primary);
+}
+
+.banner-slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.banner-slide.active {
+    opacity: 1;
+}
+
+.banner-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.banner-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to right, rgba(44, 62, 80, 0.7), rgba(52, 152, 219, 0.5));
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 0 5%;
+    color: white;
+}
+
+.banner-title {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+    max-width: 600px;
+}
+
+.banner-subtitle {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    max-width: 500px;
+}
+
+.banner-btn {
+    background-color: var(--accent);
+    color: white;
+    padding: 0.8rem 1.5rem;
+    border-radius: 30px;
+    font-weight: 600;
+    transition: var(--transition);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    text-decoration: none;
+}
+
+.banner-btn:hover {
+    background-color: var(--accent-hover);
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Banner Navigation */
+.banner-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    border: none;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: var(--transition);
+    z-index: 10;
+    font-size: 1.2rem;
+}
+
+.banner-nav:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+.banner-nav.prev {
+    left: 20px;
+}
+
+.banner-nav.next {
+    right: 20px;
+}
+
+.banner-dots {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px;
+}
+
+.banner-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.5);
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.banner-dot.active {
+    background-color: white;
+    transform: scale(1.2);
+}
+
+/* ===== MAIN LAYOUT ===== */
+.main-layout {
+    display: flex;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 2rem 1.5rem;
+    gap: 2rem;
+}
+
+/* Sidebar */
+.sidebar {
+    width: 280px;
+    flex-shrink: 0;
+}
+
+.sidebar-container {
+    background: white;
+    border-radius: var(--border-radius);
+    padding: 1.5rem;
+    box-shadow: var(--box-shadow);
+    position: sticky;
+    top: 100px;
+}
+
+.sidebar-title {
+    font-size: 1.3rem;
+    color: var(--secondary);
+    margin-bottom: 1.2rem;
+    padding-bottom: 0.7rem;
+    border-bottom: 2px solid var(--light-gray);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.categories-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.category-item {
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    padding: 0.8rem 1rem;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.category-item:hover {
+    background-color: var(--light-gray);
+}
+
+.category-item.active {
+    background-color: var(--primary);
+    color: white;
+}
+
+.category-icon {
+    width: 24px;
+    text-align: center;
+}
+
+.category-count {
+    margin-left: auto;
+    font-size: 0.8rem;
+    background: rgba(0, 0, 0, 0.1);
+    padding: 0.2rem 0.5rem;
+    border-radius: 20px;
+}
+
+.category-item.active .category-count {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+/* Main Content */
+.main-content {
+    flex: 1;
+}
+
+.section-container {
+    margin-bottom: 2.5rem;
+}
+
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--light-gray);
+}
+
+.section-title {
+    font-size: 1.6rem;
+    color: var(--secondary);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.section-link {
+    color: var(--primary);
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    transition: var(--transition);
+    text-decoration: none;
+}
+
+.section-link:hover {
+    color: var(--primary-dark);
+    gap: 0.5rem;
+}
+
+/* ===== BOOKS GRID ===== */
+.books-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 1.5rem;
+}
+
+.product-card {
+    background: white;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    box-shadow: var(--box-shadow);
+    transition: var(--transition);
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--box-shadow-hover);
+}
+
+.product-badge {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background-color: var(--accent);
+    color: white;
+    padding: 0.3rem 0.6rem;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    z-index: 1;
+}
+
+.product-thumb {
+    height: 220px;
+    overflow: hidden;
+    position: relative;
+}
+
+.product-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s;
+}
+
+.product-card:hover .product-thumb img {
+    transform: scale(1.05);
+}
+
+.product-info {
+    padding: 1.2rem;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.product-title {
+    font-size: 1.05rem;
+    margin-bottom: 0.5rem;
+    color: var(--secondary);
+    height: 2.8rem;
+    overflow: hidden;
+    display: -webkit-box;
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
+    line-height: 1.4;
+}
+
+.product-author {
+    color: var(--gray);
+    margin-bottom: 0.6rem;
+    font-size: 0.85rem;
+}
+
+.product-rating {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    margin-bottom: 0.8rem;
+}
+
+.rating-stars {
+    color: #ffc107;
+    font-size: 0.8rem;
+}
+
+.rating-count {
+    color: var(--gray);
+    font-size: 0.75rem;
+}
+
+.product-price {
+    font-weight: bold;
+    color: var(--accent);
+    font-size: 1rem;
+    margin-bottom: 0.6rem;
+}
+
+.product-meta {
+    font-size: 0.8rem;
+    margin-bottom: 0.5rem;
+    color: #5a6c7d;
+}
+
+.product-category {
+    display: inline-block;
+    background: #e0e7ff;
+    color: #4a69bd;
+    padding: 0.2rem 0.5rem;
+    border-radius: 20px;
+    font-size: 0.7rem;
+    margin-bottom: 0.8rem;
+    align-self: flex-start;
+}
+
+.product-actions {
+    display: flex;
+    gap: 0.6rem;
+    margin-top: auto;
+}
+
+.btn-detail, .btn-add {
+    flex: 1;
+    padding: 0.6rem;
+    text-align: center;
+    border-radius: 5px;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: var(--transition);
+    font-weight: 500;
+    text-decoration: none;
+    border: none;
+}
+
+.btn-detail {
+    background: var(--light-gray);
+    color: var(--dark);
+}
+
+.btn-detail:hover {
+    background: #d1d5db;
+}
+
+.btn-add {
+    background: var(--primary);
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.3rem;
+}
+
+.btn-add:hover {
+    background: var(--primary-dark);
+}
+
+/* ===== FEATURED SECTION ===== */
+.featured-section {
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    padding: 3rem 0;
+    margin: 3rem 0;
+}
+
+.featured-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+}
+
+.featured-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+}
+
+.featured-card {
+    background: white;
+    border-radius: var(--border-radius);
+    padding: 1.5rem;
+    text-align: center;
+    box-shadow: var(--box-shadow);
+    transition: var(--transition);
+}
+
+.featured-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--box-shadow-hover);
+}
+
+.featured-icon {
+    font-size: 2.5rem;
+    color: var(--primary);
+    margin-bottom: 1rem;
+}
+
+.featured-title {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+    color: var(--secondary);
+}
+
+.featured-desc {
+    color: var(--gray);
+    font-size: 0.9rem;
+}
+
+/* ===== NEWSLETTER ===== */
+.newsletter-section {
+    background: linear-gradient(135deg, var(--secondary) 0%, var(--primary) 100%);
+    color: white;
+    padding: 3rem 0;
+    text-align: center;
+}
+
+.newsletter-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+}
+
+.newsletter-title {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+}
+
+.newsletter-desc {
+    margin-bottom: 1.5rem;
+    opacity: 0.9;
+}
+
+.newsletter-form {
+    display: flex;
+    gap: 0.5rem;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.newsletter-input {
+    flex: 1;
+    padding: 0.8rem 1rem;
+    border: none;
+    border-radius: 30px;
+    font-size: 1rem;
+}
+
+.newsletter-input:focus {
+    outline: none;
+}
+
+.newsletter-btn {
+    background: var(--accent);
+    color: white;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 30px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.newsletter-btn:hover {
+    background: var(--accent-hover);
+}
+
+/* ===== RESPONSIVE DESIGN ===== */
+@media (max-width: 1200px) {
+    .books-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+    
+    .sidebar {
+        width: 240px;
+    }
+}
+
+@media (max-width: 992px) {
+    .main-layout {
+        flex-direction: column;
+    }
+    
+    .sidebar {
+        width: 100%;
+    }
+    
+    .sidebar-container {
+        position: static;
+    }
+    
+    .categories-list {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+    
+    .category-item {
+        flex: 1;
+        min-width: 150px;
+    }
+    
+    .books-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    
+    .banner-title {
+        font-size: 2.5rem;
+    }
+    
+    .banner-subtitle {
+        font-size: 1.1rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .books-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .banner-container {
+        height: 400px;
+    }
+    
+    .banner-title {
+        font-size: 2rem;
+    }
+    
+    .banner-subtitle {
+        font-size: 1rem;
+    }
+    
+    .banner-nav {
+        width: 40px;
+        height: 40px;
+        font-size: 1rem;
+    }
+    
+    .featured-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .newsletter-form {
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 576px) {
+    .books-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .banner-container {
+        height: 350px;
+    }
+    
+    .banner-title {
+        font-size: 1.8rem;
+    }
+    
+    .banner-overlay {
+        padding: 0 1.5rem;
+    }
+    
+    .banner-nav {
+        display: none;
+    }
+    
+    .featured-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .categories-list {
+        flex-direction: column;
+    }
+    
+    .category-item {
+        min-width: auto;
+    }
+}
+/* ===== BANNER STYLES ===== */
+.banner-container {
+    position: relative;
+    width: 100%;
+    height: 500px;
+    overflow: hidden;
+    border-bottom: 5px solid var(--primary);
+}
+
+/* ... [Kode banner styles tetap sama] ... */
+
+/* ===== IMPROVED MAIN CONTENT STYLES ===== */
+.main-content-full {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 2rem 1.5rem;
+}
+
+/* ===== BOOK SECTION STYLES ===== */
+.book-section {
+    margin-bottom: 4rem;
+}
+
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    padding-bottom: 0.8rem;
+    border-bottom: 2px solid var(--light-gray);
+}
+
+.section-title {
+    font-size: 1.8rem;
+    color: var(--secondary);
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+}
+
+.section-link {
+    color: var(--primary);
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: var(--transition);
+    text-decoration: none;
+    font-size: 1rem;
+}
+
+.section-link:hover {
+    color: var(--primary-dark);
+    gap: 0.8rem;
+}
+
+/* ===== BOOKS GRID - 6 PER ROW YANG BAGUS ===== */
+.books-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 1rem;
+}
+
+.book-card {
+    background: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    position: relative;
+    text-decoration: none;
+    color: inherit;
+}
+
+.book-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+}
+
+.book-badge {
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    background-color: var(--accent);
+    color: white;
+    padding: 0.2rem 0.4rem;
+    border-radius: 4px;
+    font-size: 0.65rem;
+    font-weight: 700;
+    z-index: 2;
+}
+
+.discount-badge {
+    background-color: #27ae60;
+}
+
+.bestseller-badge {
+    background-color: #ff6b35;
+}
+
+.book-image {
+    height: 160px;
+    overflow: hidden;
+    position: relative;
+    background: #f8f9fa;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.8rem;
+}
+
+.book-image img {
+    width: auto;
+    height: 100%;
+    max-height: 140px;
+    object-fit: contain;
+    transition: transform 0.5s;
+}
+
+.book-card:hover .book-image img {
+    transform: scale(1.05);
+}
+
+.book-info {
+    padding: 1rem;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    border-top: 1px solid var(--light-gray);
+}
+
+.book-author {
+    color: var(--gray);
+    font-size: 0.75rem;
+    margin-bottom: 0.4rem;
+    font-weight: 500;
+    line-height: 1.2;
+}
+
+.book-title {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--secondary);
+    margin-bottom: 0.5rem;
+    line-height: 1.2;
+    display: -webkit-box;
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    height: 2.2rem;
+}
+
+.book-category {
+    display: inline-block;
+    background: var(--light-gray);
+    color: var(--gray);
+    padding: 0.2rem 0.5rem;
+    border-radius: 10px;
+    font-size: 0.7rem;
+    margin-bottom: 0.6rem;
+    align-self: flex-start;
+}
+
+.book-divider {
+    height: 1px;
+    background: var(--light-gray);
+    margin: 0.4rem 0;
+}
+
+.book-price-section {
+    margin-top: auto;
+    padding-top: 0.4rem;
+}
+
+.book-price {
+    font-weight: 700;
+    color: var(--accent);
+    font-size: 0.9rem;
+}
+
+.book-price-original {
+    font-size: 0.75rem;
+    color: var(--gray);
+    text-decoration: line-through;
+    margin-bottom: 0.15rem;
+}
+
+.price-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.discount-price-container {
+    display: flex;
+    flex-direction: column;
+}
+
+/* ===== BADGE RANKING STYLES ===== */
+.book-badge.bestseller-badge {
+    background: linear-gradient(135deg, var(--bestseller-badge, #ff6b35) 0%, #ff8c42 100%);
+    color: white;
+}
+
+/* Untuk badge peringkat 1 */
+.book-badge.top-1 {
+    background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+    color: #000;
+}
+
+/* Untuk badge peringkat 2 */
+.book-badge.top-2 {
+    background: linear-gradient(135deg, #C0C0C0 0%, #A0A0A0 100%);
+    color: white;
+}
+
+/* Untuk badge peringkat 3 */
+.book-badge.top-3 {
+    background: linear-gradient(135deg, #CD7F32 0%, #8B4513 100%);
+    color: white;
+}
+
+/* Untuk badge peringkat 4, 5, 6 - menggunakan warna bestseller biasa */
+.book-badge.top-4,
+.book-badge.top-5,
+.book-badge.top-6 {
+    background: linear-gradient(135deg, var(--bestseller-badge, #ff6b35) 0%, #ff8c42 100%);
+    color: white;
+}
+
+/* Jika variabel CSS belum didefinisikan, tambahkan ini */
+:root {
+    --bestseller-badge: #ff6b35;
+}
+
+/* ===== RESPONSIVE DESIGN ===== */    
+@media (max-width: 1400px) {
+    .books-grid {
+        grid-template-columns: repeat(7, 1fr);
+    }
+}
+
+@media (max-width: 1200px) {
+    .books-grid {
+        grid-template-columns: repeat(5, 1fr);
+        gap: 1.2rem;
+    }
+    
+    .book-image {
+        height: 180px;
+    }
+    
+    .book-image img {
+        max-height: 160px;
+    }
+    
+    .book-info {
+        padding: 1.2rem;
+    }
+    
+    .book-title {
+        font-size: 0.9rem;
+        height: 2.4rem;
+    }
+    
+    .book-author {
+        font-size: 0.8rem;
+    }
+}
+
+@media (max-width: 992px) {
+    .books-grid {
+        grid-template-columns: repeat(5, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .books-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    
+    .section-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .books-grid {
+        grid-template-columns: 2 1fr;
+    }
+    
+    .main-content-full {
+        padding: 1.5rem 1rem;
+    }
+}
+
+/* ===== UTILITY STYLES ===== */
+.no-books-found {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 3rem 1rem;
+    color: var(--gray);
+}
+
+.no-books-found h3 {
+    margin-bottom: 1rem;
+    color: var(--secondary);
+}
+
+.btn-view-all {
+    display: inline-block;
+    background: var(--primary);
+    color: white;
+    padding: 0.8rem 1.5rem;
+    border-radius: var(--border-radius);
+    text-decoration: none;
+    font-weight: 500;
+    transition: var(--transition);
+    margin-top: 1rem;
+}
+
+.btn-view-all:hover {
+    background: var(--primary-dark);
+    transform: translateY(-2px);
+}
+    /* ===== IMPROVED MAIN CONTENT STYLES ===== */
+    .main-content-full {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 2rem 1.5rem;
+    }
+    
+    /* ===== BOOK SECTION STYLES ===== */
+    .book-section {
+        margin-bottom: 4rem;
+    }
+    
+    .section-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 2rem;
+        padding-bottom: 0.8rem;
+        border-bottom: 2px solid var(--light-gray);
+    }
+    
+    .section-title {
+        font-size: 1.8rem;
+        color: var(--secondary);
+        display: flex;
+        align-items: center;
+        gap: 0.8rem;
+    }
+    
+    .section-link {
+        color: var(--primary);
+        font-weight: 500;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        transition: var(--transition);
+        text-decoration: none;
+        font-size: 1rem;
+    }
+    
+    .section-link:hover {
+        color: var(--primary-dark);
+        gap: 0.8rem;
+    }
+    
+    /* ===== BOOKS GRID - 6 PER ROW YANG BAGUS ===== */
+    .books-grid {
+        display: grid;
+        grid-template-columns: repeat(6, 1fr);
+        gap: 1rem;
+    }
+    
+    .book-card {
+        background: white;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease;
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        position: relative;
+        text-decoration: none;
+        color: inherit;
+    }
+    
+    .book-card:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+    }
+    
+    .book-badge {
+        position: absolute;
+        top: 8px;
+        left: 8px;
+        background-color: var(--accent);
+        color: white;
+        padding: 0.2rem 0.4rem;
+        border-radius: 4px;
+        font-size: 0.65rem;
+        font-weight: 700;
+        z-index: 2;
+    }
+    
+    .discount-badge {
+        background-color: #27ae60;
+    }
+    
+    .bestseller-badge {
+        background-color: #ff6b35;
+    }
+    
+    .book-image {
+        height: 160px;
+        overflow: hidden;
+        position: relative;
+        background: #f8f9fa;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0.8rem;
+    }
+    
+    .book-image img {
+        width: auto;
+        height: 100%;
+        max-height: 140px;
+        object-fit: contain;
+        transition: transform 0.5s;
+    }
+    
+    .book-card:hover .book-image img {
+        transform: scale(1.05);
+    }
+    
+    .book-info {
+        padding: 1rem;
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+        border-top: 1px solid var(--light-gray);
+    }
+    
+    .book-author {
+        color: var(--gray);
+        font-size: 0.75rem;
+        margin-bottom: 0.4rem;
+        font-weight: 500;
+        line-height: 1.2;
+    }
+    
+    .book-title {
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: var(--secondary);
+        margin-bottom: 0.5rem;
+        line-height: 1.2;
+        display: -webkit-box;
+        line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        height: 2.2rem;
+    }
+    
+    .book-category {
+        display: inline-block;
+        background: var(--light-gray);
+        color: var(--gray);
+        padding: 0.2rem 0.5rem;
+        border-radius: 10px;
+        font-size: 0.7rem;
+        margin-bottom: 0.6rem;
+        align-self: flex-start;
+    }
+    
+    .book-divider {
+        height: 1px;
+        background: var(--light-gray);
+        margin: 0.4rem 0;
+    }
+    
+    .book-price-section {
+        margin-top: auto;
+        padding-top: 0.4rem;
+    }
+    
+    .book-price {
+        font-weight: 700;
+        color: var(--accent);
+        font-size: 0.9rem;
+    }
+    
+    .book-price-original {
+        font-size: 0.75rem;
+        color: var(--gray);
+        text-decoration: line-through;
+        margin-bottom: 0.15rem;
+    }
+    
+    .price-container {
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .discount-price-container {
+        display: flex;
+        flex-direction: column;
+    }
+    
+    /* ===== RESPONSIVE DESIGN ===== */    
+    @media (max-width: 1400px) {
+        .books-grid {
+            grid-template-columns: repeat(7, 1fr);
+        }
+    }
+    
+    @media (max-width: 1200px) {
+        .books-grid {
+            grid-template-columns: repeat(5, 1fr);
+            gap: 1.2rem;
+        }
+        
+        .book-image {
+            height: 180px;
+        }
+        
+        .book-image img {
+            max-height: 160px;
+        }
+        
+        .book-info {
+            padding: 1.2rem;
+        }
+        
+        .book-title {
+            font-size: 0.9rem;
+            height: 2.4rem;
+        }
+        
+        .book-author {
+            font-size: 0.8rem;
+        }
+    }
+    
+    @media (max-width: 992px) {
+        .books-grid {
+            grid-template-columns: repeat(5, 1fr);
+        }
+    }
+    
+    @media (max-width: 768px) {
+        .books-grid {
+            grid-template-columns: repeat(3, 1fr);
+        }
+        
+        .section-header {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 1rem;
+        }
+    }
+    
+    @media (max-width: 576px) {
+        .books-grid {
+            grid-template-columns:2 1fr;
+        }
+        
+        .main-content-full {
+            padding: 1.5rem 1rem;
+        }
+    }
+    /* ===== BADGE RANKING STYLES ===== */
+.book-badge.bestseller-badge {
+    background: linear-gradient(135deg, var(--bestseller-badge, #ff6b35) 0%, #ff8c42 100%);
+    color: white;
+}
+
+/* Untuk badge peringkat 1 */
+.book-badge.top-1 {
+    background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+    color: #000;
+}
+
+/* Untuk badge peringkat 2 */
+.book-badge.top-2 {
+    background: linear-gradient(135deg, #C0C0C0 0%, #A0A0A0 100%);
+    color: white;
+}
+
+/* Untuk badge peringkat 3 */
+.book-badge.top-3 {
+    background: linear-gradient(135deg, #CD7F32 0%, #8B4513 100%);
+    color: white;
+}
+
+/* Untuk badge peringkat 4, 5, 6 - menggunakan warna bestseller biasa */
+.book-badge.top-4,
+.book-badge.top-5,
+.book-badge.top-6 {
+    background: linear-gradient(135deg, var(--bestseller-badge, #ff6b35) 0%, #ff8c42 100%);
+    color: white;
+}
+
+/* Jika variabel CSS belum didefinisikan, tambahkan ini */
+:root {
+    --bestseller-badge: #ff6b35;
+}
